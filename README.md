@@ -28,6 +28,14 @@ provide a unified interface for DevOps and system administration tasks.
 - Commands are converted into tokens
 - Parsed arguments are prepared for future process execution with execvp()
 
+## Week 4 Features
+
+- Process creation using fork()
+- Command execution using execvp()
+- Parent-child synchronization using waitpid()
+- Error handling using perror()
+- Modular process execution
+
 ## Build
 
 make
