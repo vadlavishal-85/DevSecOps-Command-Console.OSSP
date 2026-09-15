@@ -20,6 +20,14 @@ provide a unified interface for DevOps and system administration tasks.
 - Proper memory cleanup using free()
 - Modular input handling
 
+## Week 3 Features
+
+- Command parsing using strtok()
+- Dynamic argv[] construction
+- Modular parser implementation
+- Commands are converted into tokens
+- Parsed arguments are prepared for future process execution with execvp()
+
 ## Build
 
 make
