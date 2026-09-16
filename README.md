@@ -28,6 +28,7 @@ provide a unified interface for DevOps and system administration tasks.
 - Commands are converted into tokens
 - Parsed arguments are prepared for future process execution with execvp()
 
+
 ## Week 4 Features
 
 - Process creation using fork()
@@ -36,6 +37,17 @@ provide a unified interface for DevOps and system administration tasks.
 - Error handling using perror()
 - Modular process execution
 
+## Week 5 Features
+
+- Built-in command support
+- `cd` using chdir()
+- `pwd` using getcwd()
+- `help` command
+- `clear` command
+- `exit` command
+- Environment variable support using getenv()
+- Built-in commands execute inside the shell process
+- External commands continue to use fork(), execvp(), and waitpid()
 ## Build
 
 make
