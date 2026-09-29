@@ -48,6 +48,38 @@ provide a unified interface for DevOps and system administration tasks.
 - Environment variable support using getenv()
 - Built-in commands execute inside the shell process
 - External commands continue to use fork(), execvp(), and waitpid()
+## Week 6 — Signal Handling & Process Control
+
+### Features Added
+
+- Linux signal handling
+- SIGINT handling for Ctrl+C
+- SIGCHLD handling for terminated child processes
+- Zombie process prevention
+- Modular signal handling using `signals.c` and `signals.h`
+
+### Purpose
+
+The purpose of Week 6 was to make the shell more robust when handling asynchronous events and child processes.
+
+### Signal Handling
+
+#### SIGINT
+
+`SIGINT` is generated when the user presses `Ctrl+C`.
+
+Instead of terminating the shell, the signal handler displays a message and allows the shell to continue running.
+
+Example:
+
+```text
+devshell> sleep 20
+^C
+DevSecOps Command Console: Press 'exit' to quit.
+devshell>
+
+
+
 ## Build
 
 make
