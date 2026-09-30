@@ -78,7 +78,33 @@ devshell> sleep 20
 DevSecOps Command Console: Press 'exit' to quit.
 devshell>
 
+## Week 7 — Security Layer
 
+### Features Added
+
+- Command whitelist
+- Command validation
+- Input sanitization
+- Unauthorized command blocking
+- Security alerts for blocked commands
+- Modular security implementation using `security.c` and `security.h`
+
+### Purpose
+
+The Week 7 security layer prevents unauthorized commands and unsafe command patterns from reaching the execution stage.
+
+### Command Whitelisting
+
+Only approved commands are allowed to execute.
+
+Example:
+
+```text
+devshell> pwd
+/home/vishal/DevSecOps_Command_Console
+
+devshell> whoami
+Security Alert: Command 'whoami' is not allowed.
 
 ## Build
 

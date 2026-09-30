@@ -8,6 +8,7 @@
 #include "../include/process.h"
 #include "../include/builtin.h"
 #include "../include/signals.h"
+#include "../include/security.h"
 
 int main()
 {
@@ -32,7 +33,40 @@ int main()
             continue;
         }
 
+        /*
+         * Week 7 Security Layer:
+         * Validate the complete user input
+         * before parsing or execution.
+         */
+        if (!validate_command(line))
+        {
+            printf("Security Alert: Invalid command input blocked.\n");
+            free(line);
+            continue;
+        }
+
         tokens = parse_line(line);
+
+        if (tokens == NULL || tokens[0] == NULL)
+        {
+            free_tokens(tokens);
+            free(line);
+            continue;
+        }
+
+        /*
+         * Check whether the command is present
+         * in the security whitelist.
+         */
+        if (!is_command_allowed(tokens[0]))
+        {
+            printf("Security Alert: Command '%s' is not allowed.\n",
+                   tokens[0]);
+
+            free_tokens(tokens);
+            free(line);
+            continue;
+        }
 
         if (execute_builtin(tokens) == 0)
         {

@@ -6,7 +6,8 @@ SRC = src/main.c \
       src/parser.c \
       src/process.c \
       src/builtin.c \
-      src/signals.c
+      src/signals.c \
+      src/security.c
 
 TARGET = bin/devshell
 
