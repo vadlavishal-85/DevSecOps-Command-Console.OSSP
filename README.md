@@ -106,6 +106,50 @@ devshell> pwd
 devshell> whoami
 Security Alert: Command 'whoami' is not allowed.
 
+
+## Week 8 — Memory Management & Debugging
+
+### Features Added
+
+- Memory leak detection using Valgrind
+- Debugging using GDB
+- AddressSanitizer support
+- Improved memory cleanup
+- Defensive memory management
+- Verification of dynamic memory allocation and deallocation
+
+### Tools Used
+
+- Valgrind
+- GDB
+- AddressSanitizer
+- GCC Debugging Symbols
+
+### Memory Management
+
+The project uses dynamic memory through:
+
+- `malloc()`
+- `realloc()`
+- `free()`
+
+Week 8 focused on checking that dynamically allocated memory is properly released and identifying memory-related problems.
+
+### GDB Debugging
+
+GDB was used to:
+
+- Set a breakpoint at `main()`
+- Start the program using `run`
+- Execute source lines using `next`
+- Continue program execution using `continue`
+
+### AddressSanitizer
+
+AddressSanitizer was enabled using:
+
+```text
+-fsanitize=address
 ## Build
 
 make

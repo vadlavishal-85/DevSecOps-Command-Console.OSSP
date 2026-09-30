@@ -15,7 +15,7 @@ int execute_builtin(char **args)
     /* exit */
     if (strcmp(args[0], "exit") == 0)
     {
-        exit(EXIT_SUCCESS);
+        return 2;
     }
 
     /* pwd */

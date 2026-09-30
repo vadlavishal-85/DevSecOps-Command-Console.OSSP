@@ -68,13 +68,20 @@ int main()
             continue;
         }
 
-        if (execute_builtin(tokens) == 0)
-        {
-            execute(tokens);
-        }
+       int builtin_status = execute_builtin(tokens);
 
-        free_tokens(tokens);
-        free(line);
+if (builtin_status == 0)
+{
+    execute(tokens);
+}
+
+free_tokens(tokens);
+free(line);
+
+if (builtin_status == 2)
+{
+    break;
+}
     }
 
     return 0;
