@@ -9,6 +9,7 @@
 #include "../include/builtin.h"
 #include "../include/signals.h"
 #include "../include/security.h"
+#include "../include/thread.h"
 
 int main()
 {
@@ -16,6 +17,7 @@ int main()
     char **tokens;
 
     initialize_signals();
+    start_monitor_thread();
 
     printf("=================================\n");
     printf("%s Version %s\n", SHELL_NAME, VERSION);
