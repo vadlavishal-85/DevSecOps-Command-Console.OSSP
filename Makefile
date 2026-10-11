@@ -10,8 +10,7 @@ SRC = src/main.c \
       src/signals.c \
       src/security.c \
       src/redirect.c \
-      src/thread.c \
-      src/deadlock.c
+      src/thread.c
 
 TARGET = bin/devshell
 
