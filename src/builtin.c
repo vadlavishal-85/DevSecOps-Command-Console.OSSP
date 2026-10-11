@@ -1,9 +1,11 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 
 #include "../include/builtin.h"
+#include "../include/deadlock.h"
 
 int execute_builtin(char **args)
 {
@@ -14,15 +16,15 @@ int execute_builtin(char **args)
 
     /* exit */
     if (strcmp(args[0], "exit") == 0)
-    {
         return 2;
-    }
 
     /* pwd */
     if (strcmp(args[0], "pwd") == 0)
     {
         if (getcwd(cwd, sizeof(cwd)) != NULL)
             printf("%s\n", cwd);
+        else
+            perror("pwd");
 
         return 1;
     }
@@ -31,14 +33,9 @@ int execute_builtin(char **args)
     if (strcmp(args[0], "cd") == 0)
     {
         if (args[1] == NULL)
-        {
             printf("Usage: cd directory\n");
-        }
-        else
-        {
-            if (chdir(args[1]) != 0)
-                perror("cd");
-        }
+        else if (chdir(args[1]) != 0)
+            perror("cd");
 
         return 1;
     }
@@ -55,12 +52,14 @@ int execute_builtin(char **args)
     {
         printf("\nDevSecOps Command Console - Built-in Commands\n");
         printf("----------------------------------------------\n");
-        printf("cd       Change directory\n");
-        printf("pwd      Show current directory\n");
-        printf("clear    Clear the terminal\n");
-        printf("help     Show built-in commands\n");
-        printf("env      Show environment variables\n");
-        printf("exit     Exit the console\n");
+        printf("cd             Change directory\n");
+        printf("pwd            Show current directory\n");
+        printf("clear          Clear the terminal\n");
+        printf("help           Show built-in commands\n");
+        printf("env            Show environment variables\n");
+        printf("deadlock-demo  Demonstrate deadlock risk\n");
+        printf("deadlock-safe  Demonstrate deadlock prevention\n");
+        printf("exit           Exit the console\n");
 
         return 1;
     }
@@ -72,6 +71,20 @@ int execute_builtin(char **args)
         printf("USER = %s\n", getenv("USER"));
         printf("PATH = %s\n", getenv("PATH"));
 
+        return 1;
+    }
+
+    /* Deadlock risk demonstration */
+    if (strcmp(args[0], "deadlock-demo") == 0)
+    {
+        run_deadlock_demo();
+        return 1;
+    }
+
+    /* Deadlock prevention demonstration */
+    if (strcmp(args[0], "deadlock-safe") == 0)
+    {
+        run_deadlock_prevention_demo();
         return 1;
     }
 

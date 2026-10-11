@@ -26,9 +26,10 @@ static const char *allowed_commands[] =
     "mv",
     "rm",
     "sleep",
+    "deadlock-demo",
+    "deadlock-safe",
     NULL
 };
-
 int is_command_allowed(const char *command)
 {
     int i = 0;
@@ -71,3 +72,4 @@ int validate_command(const char *command)
 
     return 1;
 }
+    
